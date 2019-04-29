@@ -1,0 +1,4 @@
+- Title bar
+- Timemout handling
+- Details page displaying actual Details
+- Tests

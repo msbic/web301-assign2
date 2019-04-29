@@ -1,0 +1,27 @@
+.pkmon
+{
+    /*width: 100px;
+    height: 100px;*/
+}
+
+.mygrid 
+{
+    display: flex;
+    flex-direction: row;
+    background-color: lightgray;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .mygrid > div 
+  {
+    background-color: lightblue;
+    color: darkblue;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    padding-top: 15px;
+    text-align: center;
+    /*line-height: 75px;*/
+    font-size: 12px;
+  }
