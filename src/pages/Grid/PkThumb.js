@@ -4,6 +4,19 @@ import axios from 'axios';
 
 import Loading from '../../components/Loading/Loading';
 
+function getPokemonId(url)
+{
+    let ret = "";
+    const ar = url.split('/').filter(el => el !== "");
+    
+    if (ar.length > 0)
+    {
+        ret = ar[ ar.length - 1 ];
+    }
+    
+    return ret;
+}
+
 class PkThumbnail extends Component 
 {
   constructor(props)
@@ -22,8 +35,8 @@ class PkThumbnail extends Component
 
   componentDidMount()
   {
-    const {url} = this.state;
-    axios.get(url).then((response) => {
+        const {url} = this.state;
+        axios.get(url).then((response) => {
              
             this.setState({
                     icon : response.data.sprites.front_default,
@@ -45,16 +58,17 @@ class PkThumbnail extends Component
                 });
             }, 1500);
         });
-  }
+  } 
 
   render() 
   {
-    const {name, icon, error, loading} = this.state;
-    const url = "/details/" + name;
+    const {name, icon, error, loading, url} = this.state;
+    
+    const path = "/details/" + getPokemonId(url);
     return (
     <div>
         <nav>
-            <Link to={url}>
+            <Link to={path}>
             {!loading && error && (
                 <p>Error retrieving thumbmail</p>
             )}
