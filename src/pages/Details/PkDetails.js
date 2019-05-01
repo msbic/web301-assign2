@@ -6,14 +6,15 @@ import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 
 import Loading from '../../components/Loading/Loading';
+import styles from './PkDetails.module.css';
 
-const styles = theme => ({
+const stylez = theme => ({
     button: {
       margin: theme.spacing.unit,
     },
     input: {
       display: 'none',
-    },
+    },   
   });
 
 class PkDetail extends Component 
@@ -30,8 +31,8 @@ class PkDetail extends Component
         error: false,
         icon: "",
         classes: classes,
-        stats = [],
-        name = "",
+        stats: [],
+        name: "",
       }      
   }
 
@@ -65,21 +66,60 @@ class PkDetail extends Component
 
   render()
   {
-    const { classes, icon, stats, name } = this.state;  
+    const { classes, icon, stats, name, loading, error, url } = this.state; 
     return (
-        <div>
-            <h6>{url}</h6>
+        <div >
+
+          {!loading && error && (
+                <p>Error retrieving pokemon details</p>
+            )}
+            {loading ? (
+                    <div><Loading size="200px"></Loading></div>
+            ) : 
+            (
+             
+              
+              <div className={styles.detail}>
+              <table className={styles.table}>
+                    <tr>
+                      <th>Stat name</th>
+                      <th>Base stat</th> 
+                      <th>Effort</th>
+                    </tr>
+                   
+                   <React.Fragment>
+                      {                     
+                          stats.map((stat) => {
+                              return (
+                                  <tr>
+                                  <td className={styles.statName}> {stat.stat.name} </td>
+                                  <td> {stat.base_stat} </td>
+                                  <td> {stat.effort} </td>
+                                  </tr>                                    
+                              );
+                        
+                          })
+                      }
+                    </React.Fragment>
+                </table>
+                <div>
+                  <img src={icon}></img>
+                  <h4>{name}</h4>
+                </div>
+                </div>
+            )}
+
             <div>
-                    <NavLink to="/">
-                        <Button variant="contained" color="primary" className={classes.button}>
-                        Go Back
-                        </Button>
-                    </NavLink>                
-            </div>
+              <NavLink to="/">
+                  <Button variant="contained" color="primary" className={classes.button}>
+                  Go Back
+                  </Button>
+              </NavLink>                
+              </div>
         </div>
     )
   }
 }
 
 
-export default withStyles(styles)(PkDetail);
+export default withStyles(stylez)(PkDetail);
