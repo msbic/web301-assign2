@@ -21,6 +21,7 @@ class PkThumbnail extends Component
 {
   constructor(props)
   {
+      console.log(props);
       super(props);
       this.state =
       {
@@ -63,7 +64,7 @@ class PkThumbnail extends Component
   render() 
   {
     const {name, icon, error, loading, url} = this.state;
-    
+    console.log(icon);
     const path = "/details/" + getPokemonId(url);
     return (
     <div>
@@ -78,7 +79,7 @@ class PkThumbnail extends Component
             (
                 <div>
                 <div>
-                <img src={icon} height="50" width="50"></img>
+                <img src={icon} height="50" width="50" alt=""></img>
                 </div>
                 <div>{name}</div>
                 </div>

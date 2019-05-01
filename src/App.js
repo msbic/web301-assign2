@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import styles from './App.module.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -26,8 +26,14 @@ class App extends Component
             </Typography>                    
           </Toolbar>
         </AppBar>
-        <Route path="/" exact component={PkGrid} />      
-        <Route path="/details/:id" component={PkDetails} />
+        <main>
+          <BrowserRouter>
+          <Switch>
+          <Route path="/" exact component={PkGrid} />      
+          <Route path="/details/:id" component={PkDetails} />
+          </Switch>
+          </BrowserRouter>
+        </main>
       </div>
     );
   }

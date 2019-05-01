@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {  NavLink } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
@@ -66,7 +65,7 @@ class PkDetail extends Component
 
   render()
   {
-    const { classes, icon, stats, name, loading, error, url } = this.state; 
+    const { classes, icon, stats, name, loading, error } = this.state; 
     return (
         <div >
 
@@ -103,7 +102,7 @@ class PkDetail extends Component
                     </React.Fragment>
                 </table>
                 <div>
-                  <img src={icon}></img>
+                  <img src={icon} alt=""></img>
                   <h4>{name}</h4>
                 </div>
                 </div>

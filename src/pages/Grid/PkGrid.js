@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import styles from './Grid.module.css';
 import PkThumbnail from './PkThumb';
 
@@ -52,7 +51,7 @@ class PkGrid extends Component
 
     render() 
     {
-        const { loading, pkList, error, classes, spacing, direction, justify, alignItems } = this.state;
+        const { loading, pkList, error, classes } = this.state;
         return (
             <div className={classes.root}>
             
